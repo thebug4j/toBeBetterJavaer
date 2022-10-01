@@ -1,31 +1,18 @@
----
-title: 面渣逆袭（Spring面试题八股文）必看👍
-shortTitle: 面渣逆袭-Spring
-description: 图文详解 35 道Spring面试高频题，这次吊打面试官，我觉得稳了（手动 dog）
-author: 三分恶
-category:
-  - 面渣逆袭
-tags:
-  - 面渣逆袭
-head:
-  - - meta
-    - name: keywords
-      content: Spring面试题,Spring,面试题,八股文,java
----
+[TOC]
 
-> 图文详解 35 道Spring面试高频题，这次吊打面试官，我觉得稳了（手动 dog）。整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/EQge6DmgIqYITM3mAxkatg)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/Y17S85ntHm_MLTZMJdtjQQ)。
+
 
 ## 基础
 
 ### 1.Spring 是什么？特性？有哪些模块？
 
-![Spring Logo](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-165c27b4-2ea0-409a-8fa5-389c105db0fa.png)
+![Spring Logo](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-165c27b4-2ea0-409a-8fa5-389c105db0fa.png)
 
 一句话概括：**Spring 是一个轻量级、非入侵式的控制反转 (IoC) 和面向切面 (AOP) 的框架。**
 
 2003 年，一个音乐家 Rod Johnson 决定发展一个轻量级的 Java 开发框架，`Spring`作为 Java 战场的龙骑兵渐渐崛起，并淘汰了`EJB`这个传统的重装骑兵。
 
-![Spring重要版本](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-5d9efb93-03a5-400c-8429-3be7c5eeddfb.png)
+![Spring重要版本](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-5d9efb93-03a5-400c-8429-3be7c5eeddfb.png)
 
 到了现在，企业级开发的标配基本就是 **Spring5** + **Spring Boot 2** + **JDK 8**
 
@@ -33,11 +20,15 @@ head:
 
 Spring 有很多优点：
 
-![Spring特性](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-a0f0ef9d-3289-41ea-94c2-34b7e37ef854.png)
+![Spring特性](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-a0f0ef9d-3289-41ea-94c2-34b7e37ef854.png)
 
 1.  **IOC** 和 **DI** 的支持
 
 Spring 的核心就是一个大的工厂容器，可以维护所有对象的创建和依赖关系，Spring 工厂用于生成 Bean，并且管理 Bean 的生命周期，实现**高内聚低耦合**的设计理念。
+
+[IOC和DI](https://blog.csdn.net/saienenen/article/details/112723007?ops_request_misc=&request_id=&biz_id=102&utm_term=ioc%20di&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-0-112723007.nonecase&spm=1018.2226.3001.4187)
+
+
 
 2.  AOP 编程的支持
 
@@ -59,11 +50,20 @@ Spring 对 Junit 提供支持，可以通过**注解**快捷地测试 Spring 程
 
 Spring 对 JavaEE 开发中非常难用的一些 API（JDBC、JavaMail、远程调用等）都提供了模板化的封装，这些封装 API 的提供使得应用难度大大降低。
 
+```
+1：IOC：控制反转( Inversion of Control ),DI（Dependency Injection）即依赖注入
+简单来说，IoC是一种思想，而DI是这种思想的具体实现方式
+2：IOC：即上层控制下层，而不是下层控制着上层。我们用依赖注入（Dependency Injection）这种方式来实现控制反转
+3：依赖注入，就是把底层类作为参数传入上层类，实现上层类对下层类的“控制”。
+```
+
+
+
 ### 2.Spring 有哪些模块呢？
 
 Spring 框架是分模块存在，除了最核心的`Spring Core Container`是必要模块之外，其他模块都是`可选`，大约有 20 多个模块。
 
-![Spring模块划分](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-bb7c13ea-3174-4b32-84b8-821849ddc377.png)
+![Spring模块划分](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-bb7c13ea-3174-4b32-84b8-821849ddc377.png)
 
 最主要的七大模块：
 
@@ -79,7 +79,7 @@ Spring 框架是分模块存在，除了最核心的`Spring Core Container`是�
 
 Spring 有很多模块，甚至广义的 SpringBoot、SpringCloud 也算是 Spring 的一部分，我们来分模块，按功能来看一下一些常用的注解：
 
-![Spring常用注解](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-8d0a1518-a425-4887-9735-45321095d927.png)
+![Spring常用注解](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-8d0a1518-a425-4887-9735-45321095d927.png)
 
 **Web**:
 
@@ -92,8 +92,10 @@ Spring 有很多模块，甚至广义的 SpringBoot、SpringCloud 也算是 Spri
   - @DeleteMapping
 - @ResponseBody：支持将返回值放在 response 内，而不是一个页面，通常用户返回 json 数据。
 - @RequestBody：允许 request 的参数在 request 体中，而不是在直接连接在地址后面。
-- @PathVariable：用于接收路径参数，比如 `@RequestMapping(“/hello/{name}”)`申明的路径，将注解放在参数中前，即可获取该值，通常作为 Restful 的接口实现方法。
-- @RestController：该注解为一个组合注解，相当于@Controller 和@ResponseBody 的组合，注解在类上，意味着，该 Controller 的所有方法都默认加上了@ResponseBody。
+- @PathVariable：用于接收路径参数，比如 `@RequestMapping(“/hello/{name}”)`申明的路径，将注解放在参数中前，即可获取该值，通常作为 **Restful** 的接口实现方法。http://localhost:8080/testPathVariable/ljj/20
+- @RequestParam：http://localhost:8080/testRequestParam?name=ljj&age=20。
+
+[PathVariable和RequestParam区别](https://blog.csdn.net/Zong_0915/article/details/126544712)
 
 **容器**:
 
@@ -123,17 +125,17 @@ Spring 有很多模块，甚至广义的 SpringBoot、SpringCloud 也算是 Spri
 
 Spring 框架中广泛使用了不同类型的设计模式，下面我们来看看到底有哪些设计模式?
 
-![Spring中用到的设计模式](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-ee1c5cee-8462-4bae-93ea-ec936cc77640.png)
+![Spring中用到的设计模式](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-ee1c5cee-8462-4bae-93ea-ec936cc77640.png)
 
 1. **工厂模式** : Spring 容器本质是一个大工厂，使用工厂模式通过 BeanFactory、ApplicationContext 创建 bean 对象。
-2. **代理模式** : Spring AOP 功能功能就是通过代理模式来实现的，分为动态代理和静态代理。
+2. **代理模式** : Spring AOP 功能就是通过代理模式来实现的，分为动态代理和静态代理。
 3. **单例模式** : Spring 中的 Bean 默认都是单例的，这样有利于容器对 Bean 的管理。
 4. **模板模式** : Spring 中 JdbcTemplate、RestTemplate 等以 Template 结尾的对数据库、网络等等进行操作的模板类，就使用到了模板模式。
 5. **观察者模式**: Spring 事件驱动模型就是观察者模式很经典的一个应用。
 6. **适配器模式** :Spring AOP 的增强或通知 (Advice) 使用到了适配器模式、Spring MVC 中也是用到了适配器模式适配 Controller。
 7. **策略模式**：Spring 中有一个 Resource 接口，它的不同实现类，会根据不同的策略去访问资源。
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
 
 ## IOC
 
@@ -143,11 +145,11 @@ Java 是面向对象的编程语言，一个个实例对象相互合作组成了
 
 所谓的**IOC**（控制反转）：就是由容器来负责控制对象的生命周期和对象间的关系。以前是我们想要什么，就自己创建什么，现在是我们需要什么，容器就给我们送来什么。
 
-![引入IOC之前和引入IOC之后](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-619da277-c15e-4dd7-9f2b-dbd809a9aaa0.png)
+![引入IOC之前和引入IOC之后](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-619da277-c15e-4dd7-9f2b-dbd809a9aaa0.png)
 
 也就是说，控制对象生命周期的不再是引用它的对象，而是容器。对具体对象，以前是它控制其它对象，现在所有对象都被容器控制，所以这就叫**控制反转**。
 
-![控制反转示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-440f5d0e-f4db-462c-97fb-d54407a354d5.png)
+![控制反转示意图](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-440f5d0e-f4db-462c-97fb-d54407a354d5.png)
 
 **DI（依赖注入）**：指的是容器在实例化对象的时候把它依赖的类注入给它。有的说法 IOC 和 DI 是一回事，有的说法是 IOC 是思想，DI 是 IOC 的实现。
 
@@ -161,7 +163,7 @@ PS:这道题老三在面试中被问到过，问法是“**你有自己实现过
 
 Spring 的 IOC 本质就是一个大工厂，我们想想一个工厂是怎么运行的呢？
 
-![工厂运行](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-7678c40f-a48d-4bd5-80f8-e902ad688e11.png)
+![工厂运行](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-7678c40f-a48d-4bd5-80f8-e902ad688e11.png)
 
 - **生产产品**：一个工厂最核心的功能就是生产产品。在 Spring 里，不用 Bean 自己来实例化，而是交给 Spring，应该怎么实现呢？——答案毫无疑问，**反射**。
 
@@ -175,7 +177,7 @@ Spring 的 IOC 本质就是一个大工厂，我们想想一个工厂是怎么�
 
 我们简单地实现一个 mini 版的 Spring IOC：
 
-![mini版本Spring IOC](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-1d55c63d-2d12-43b1-9f43-428f5f4a1413.png)
+![mini版本Spring IOC](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-1d55c63d-2d12-43b1-9f43-428f5f4a1413.png)
 
 **Bean 定义：**
 
@@ -274,7 +276,7 @@ Bean 通过一个配置文件定义，把它解析成一个类型。
 
 - **BeanFactory.java**
 
-![BeanFactory](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-c6b3b707-cf53-4c7c-a6f9-8560950806fc.png)
+![BeanFactory](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-c6b3b707-cf53-4c7c-a6f9-8560950806fc.png)
 
   - 对象工厂，我们最**核心**的一个类，在它初始化的时候，创建了 bean 注册器，完成了资源的加载。
 
@@ -380,7 +382,7 @@ PS:因为时间+篇幅的限制，这个 demo 比较简陋，没有面向接口�
 
 可以这么形容，BeanFactory 是 Spring 的“心脏”，ApplicantContext 是完整的“身躯”。
 
-![BeanFactory和ApplicantContext的比喻](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-66328446-f89f-4b7a-8d9f-0e1145dd9b2f.png)
+![BeanFactory和ApplicantContext的比喻](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-66328446-f89f-4b7a-8d9f-0e1145dd9b2f.png)
 
 - BeanFactory（Bean 工厂）是 Spring 框架的基础设施，面向 Spring 本身。
 - ApplicantContext（应用上下文）建立在 BeanFactoty 基础上，面向使用 Spring 框架的开发者。
@@ -391,7 +393,7 @@ BeanFactory 是类的通用工厂，可以创建并管理各种类的对象。
 
 Spring 为 BeanFactory 提供了很多种实现，最常用的是 XmlBeanFactory，但在 Spring 3.2 中已被废弃，建议使用 XmlBeanDefinitionReader、DefaultListableBeanFactory。
 
-![Spring5 BeanFactory继承体系](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-6e6d4b69-f36c-41e6-b8ba-9277be147c9b.png)
+![Spring5 BeanFactory继承体系](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-6e6d4b69-f36c-41e6-b8ba-9277be147c9b.png)
 
 BeanFactory 接口位于类结构树的顶端，它最主要的方法就是 getBean(String var1)，这个方法从容器中返回特定名称的 Bean。
 
@@ -413,7 +415,7 @@ public class HelloWorldApp{
 
 ApplicationContext 由 BeanFactory 派生而来，提供了更多面向实际应用的功能。可以这么说，使用 BeanFactory 就是手动档，使用 ApplicationContext 就是自动档。
 
-![Spring5 ApplicationContext部分体系类图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-e201c9a3-f23c-4768-b844-ac7e0ba4bcec.png)
+![Spring5 ApplicationContext部分体系类图](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-e201c9a3-f23c-4768-b844-ac7e0ba4bcec.png)
 
 ApplicationContext 继承了 HierachicalBeanFactory 和 ListableBeanFactory 接口，在此基础上，还通过其他的接口扩展了 BeanFactory 的功能，包括：
 
@@ -447,11 +449,11 @@ Spring 的 IOC 容器工作的过程，其实可以划分为两个阶段：**容
 
 其中容器启动阶段主要做的工作是加载和解析配置文件，保存到对应的 Bean 定义中。
 
-![容器启动和Bean实例化阶段](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-8f8103f7-2a51-4858-856e-96a4ac400d76.png)
+![容器启动和Bean实例化阶段](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-8f8103f7-2a51-4858-856e-96a4ac400d76.png)
 
 容器启动开始，首先会通过某种途径加载 Congiguration MetaData，在大部分情况下，容器需要依赖某些工具类（BeanDefinitionReader）对加载的 Congiguration MetaData 进行解析和分析，并将分析后的信息组为相应的 BeanDefinition。
 
-![xml配置信息映射注册过程](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-dfb3d8c4-ba8d-4a2c-aef2-4ad425f7180c.png)
+![xml配置信息映射注册过程](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-dfb3d8c4-ba8d-4a2c-aef2-4ad425f7180c.png)
 
 最后把这些保存了 Bean 定义必要信息的 BeanDefinition，注册到相应的 BeanDefinitionRegistry，这样容器启动就完成了。
 
@@ -463,7 +465,7 @@ Spring 的 IOC 容器工作的过程，其实可以划分为两个阶段：**容
 
 Spring IOC 中 Bean 的生命周期大致分为四个阶段：**实例化**（Instantiation）、**属性赋值**（Populate）、**初始化**（Initialization）、**销毁**（Destruction）。
 
-![Bean生命周期四个阶段](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-595fce5b-36cb-4dcb-b08c-8205a1e98d8a.png)
+![Bean生命周期四个阶段](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-595fce5b-36cb-4dcb-b08c-8205a1e98d8a.png)
 
 我们再来看一个稍微详细一些的过程：
 
@@ -472,12 +474,12 @@ Spring IOC 中 Bean 的生命周期大致分为四个阶段：**实例化**（In
 - **初始化**：初始化的阶段的步骤比较多，5、6 步是真正的初始化，第 3、4 步为在初始化前执行，第 7 步在初始化后执行，初始化完成之后，Bean 就可以被使用了
 - **销毁**：第 8~10 步，第 8 步其实也可以算到销毁阶段，但不是真正意义上的销毁，而是先在使用前注册了销毁的相关调用接口，为了后面第 9、10 步真正销毁 Bean 时再执行相应的方法
 
-![SpringBean生命周期](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-942a927a-86e4-4a01-8f52-9addd89642ff.png)
+![SpringBean生命周期](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-942a927a-86e4-4a01-8f52-9addd89642ff.png)
 
 简单总结一下，Bean 生命周期里初始化的过程相对步骤会多一些，比如前置、后置的处理。
 
 最后通过一个实例来看一下具体的细节：
-![Bean一生实例](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-a3b7714e-38f2-433d-97c6-acb1d20f2887.png)
+![Bean一生实例](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-a3b7714e-38f2-433d-97c6-acb1d20f2887.png)
 
 - 定义一个`PersonBean`类，实现`DisposableBean`,`InitializingBean`, `BeanFactoryAware`, `BeanNameAware`这 4 个接口，同时还有自定义的`init-method`和`destroy-method`。
 
@@ -621,13 +623,22 @@ Bean使用中：工作，只有对社会没有用的人才放假。。
 
 关于源码，Bean 创建过程可以查看`AbstractBeanFactory#doGetBean`方法，在这个方法里可以看到 Bean 的实例化，赋值、初始化的过程，至于最终的销毁，可以看看`ConfigurableApplicationContext#close()`。
 
-![Bean生命周期源码追踪](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-d2da20a3-08d0-4648-b9a3-2fff8512b159.png)
+![Bean生命周期源码追踪](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-d2da20a3-08d0-4648-b9a3-2fff8512b159.png)
+
+```
+1、实例化createBeanInstance【里面包含了推断构造方法，简单来说就是对bean进行实例化】
+2、属性赋值populateBean 【填充属性，处理@AutoWried，调用bean的实例化后的方法】
+3、Bean的初始化initializeBean【调用bean的初始化方法】， 同时initializeBean前后还会对aware进行调用处理【BeanNameAware、BeanClassLoaderAware、BeanFactoryAware】和【EnvironmentAware、ApplicationContextAware（BeanPostProcessor before）】，之后调用【invokeInitMethods 就是initializeBean的流程】，之后会调用一次【BeanPostProcessor的另一个调用点 after】
+4、DisposableBean 生命周期的销毁， ConfigurableApplicationContext#close()方法作为入口，实现是通过循环取所有实现了DisposableBean接口的Bean然后调用其destroy()方法
+```
+
+
 
 ### 10.Bean 定义和依赖定义有哪些方式？
 
 有三种方式：**直接编码方式**、**配置文件方式**、**注解方式**。
 
-![Bean依赖配置方式](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-89f0f50d-a9e4-4dec-b267-cb1a526cb340.png)
+![Bean依赖配置方式](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-89f0f50d-a9e4-4dec-b267-cb1a526cb340.png)
 
 - 直接编码方式：我们一般接触不到直接编码的方式，但其实其它的方式最终都要通过直接编码来实现。
 - 配置文件方式：通过 xml、propreties 类型的配置文件，配置相应的依赖关系，Spring 读取配置文件，完成依赖关系的注入。
@@ -635,9 +646,9 @@ Bean使用中：工作，只有对社会没有用的人才放假。。
 
 ### 11.有哪些依赖注入的方法？
 
-Spring 支持**构造方法注入**、**属性注入**、**工厂方法注入**,其中工厂方法注入，又可以分为**静态工厂方法注入**和**非静态工厂方法注入**。
+Spring 支持**构造方法注入**、**属性注入**、**工厂方法注入**,其中工厂方法注入，又可以分为**静态工厂方法注入**和**非静态工厂方法注入**。【按实现方式分：配置注入、注解注入】
 
-![Spring依赖注入方法](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-491f8444-54ba-4628-b8eb-8418a2197096.png)
+![Spring依赖注入方法](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-491f8444-54ba-4628-b8eb-8418a2197096.png)
 
 - **构造方法注入**
 
@@ -725,11 +736,11 @@ Spring 支持**构造方法注入**、**属性注入**、**工厂方法注入**,
          return new FactoryDaoImpl();
        }
      }
-
+    
     public class SpringAction {
       //注入对象
       private FactoryDao factoryDao;
-
+    
       public void setFactoryDao(FactoryDao factoryDao) {
         this.factoryDao = factoryDao;
       }
@@ -741,10 +752,10 @@ Spring 支持**构造方法注入**、**属性注入**、**工厂方法注入**,
        <!--使用非静态工厂的方法注入对象,对应下面的配置文件-->
        <property name="factoryDao" ref="factoryDao"></property>
      </bean>
-
+    
      <!--此处获取对象的方式是从工厂类中获取实例方法-->
      <bean name="daoFactory" class="com.DaoFactory"></bean>
-
+    
     <bean name="factoryDao" factory-bean="daoFactory" factory-method="getFactoryDaoImpl"></bean>
     ```
 
@@ -760,7 +771,7 @@ Spring 提供的这种方式，可以按照某些规则进行 Bean 的自动装�
 
 Spring 提供了 4 种自动装配类型：
 
-![Spring四种自动装配类型](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-034120d9-88c7-490b-af07-7d48f3b6b7bc.png)
+![Spring四种自动装配类型](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-034120d9-88c7-490b-af07-7d48f3b6b7bc.png)
 
 - **byName**：根据名称进行自动匹配，假设 Boss 又一个名为 car 的属性，如果容器中刚好有一个名为 car 的 bean，Spring 就会自动将其装配给 Boss 的 car 属性
 - **byType**：根据类型进行自动匹配，假设 Boss 有一个 Car 类型的属性，如果容器中刚好有一个 Car 类型的 Bean，Spring 就会自动将其装配给 Boss 这个属性
@@ -771,9 +782,9 @@ Spring 提供了 4 种自动装配类型：
 
 Spring 的 Bean 主要支持五种作用域：
 
-![Spring Bean支持作用域](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-08a9cb31-5a4f-4224-94cd-0c0f643a57ea.png)
+![Spring Bean支持作用域](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-08a9cb31-5a4f-4224-94cd-0c0f643a57ea.png)
 
-- **singleton** : 在 Spring 容器仅存在一个 Bean 实例，Bean 以单实例的方式存在，是 Bean 默认的作用域。
+- **singleton** : 在 Spring 容器仅存在一个 Bean 实例，Bean 以单实例的方式存在，是 Bean **默认**的作用域。
 - **prototype** : 每次从容器重调用 Bean 时，都会返回一个新的实例。
 
 以下三个作用域于只在 Web 应用中适用：
@@ -790,7 +801,7 @@ Spring 的 Bean 主要支持五种作用域：
 
 假如这个 Bean 是有状态的，也就是会对 Bean 中的成员变量进行写操作，那么可能就存在线程安全的问题。
 
-![Spring单例Bean线程安全问题](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-35dacef4-1a9e-45e1-b3f2-5a91227eb244.png)
+![Spring单例Bean线程安全问题](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-35dacef4-1a9e-45e1-b3f2-5a91227eb244.png)
 
 > **单例 Bean 线程安全问题怎么解决呢？**
 
@@ -812,11 +823,11 @@ Spring 的 Bean 主要支持五种作用域：
 
 > **什么是循环依赖？**
 
-![Spring循环依赖](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-f8fea53f-56fa-4cca-9199-ec7f648da625.png)
+![Spring循环依赖](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-f8fea53f-56fa-4cca-9199-ec7f648da625.png)
 
 Spring 循环依赖：简单说就是自己依赖自己，或者和别的 Bean 相互依赖。
 
-![鸡和蛋](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-0035fd25-2972-4642-a8ec-ee44a566a5bd.png)
+![鸡和蛋](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-0035fd25-2972-4642-a8ec-ee44a566a5bd.png)
 
 只有单例的 Bean 才存在循环依赖的情况，**原型**(Prototype)情况下，Spring 会直接抛出异常。原因很简单，AB 循环依赖，A 实例化的时候，发现依赖 B，创建 B 实例，创建 B 的时候发现需要 A，创建 A1 实例……无限套娃，直接把系统干垮。
 
@@ -826,11 +837,13 @@ Spring 不支持基于构造器注入的循环依赖，但是假如 AB 循环依
 
 看看几种情形：
 
-![循环依赖的几种情形](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-37bb576d-b4af-42ed-91f4-d846ceb012b6.png)
+![循环依赖的几种情形](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-37bb576d-b4af-42ed-91f4-d846ceb012b6.png)
 
 第四种可以而第五种不可以的原因是 Spring 在创建 Bean 时默认会根据自然排序进行创建，所以 A 会先于 B 进行创建。
 
 所以简单总结，当循环依赖的实例都采用 setter 方法注入的时候，Spring 可以支持，都采用构造器注入的时候，不支持，构造器注入和 setter 注入同时存在的时候，看天。
+
+![image-20221021112935096](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-20221021112935096.png)
 
 ### 16.那 Spring 怎么解决循环依赖的呢？
 
@@ -838,7 +851,7 @@ Spring 不支持基于构造器注入的循环依赖，但是假如 AB 循环依
 
 我们都知道，单例 Bean 初始化完成，要经历三步：
 
-![Bean初始化步骤](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-867066f1-49d1-4e57-94f9-4c66a3a8797e.png)
+![Bean初始化步骤](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-867066f1-49d1-4e57-94f9-4c66a3a8797e.png)
 
 注入就发生在第二步，**属性赋值**，结合这个过程，Spring 通过**三级缓存**解决了循环依赖：
 
@@ -846,34 +859,36 @@ Spring 不支持基于构造器注入的循环依赖，但是假如 AB 循环依
 2.  二级缓存 : `Map<String,Object>` **earlySingletonObjects**，早期曝光对象，用于保存实例化完成的 bean 实例
 3.  三级缓存 : `Map<String,ObjectFactory<?>>` **singletonFactories**，早期曝光对象工厂，用于保存 bean 创建工厂，以便于后面扩展有机会创建代理对象。
 
-![三级缓存](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-01d92863-a2cb-4f61-8d8d-30ecf0279b28.png)
+![三级缓存](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-01d92863-a2cb-4f61-8d8d-30ecf0279b28.png)
 
 我们来看一下三级缓存解决循环依赖的过程：
 
 当 A、B 两个类发生循环依赖时：
-![循环依赖](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-cfc09f84-f8e1-4702-80b6-d115843e81fe.png)
+![循环依赖](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-cfc09f84-f8e1-4702-80b6-d115843e81fe.png)
 
 A 实例的初始化过程：
 
 1. 创建 A 实例，实例化的时候把 A 对象⼯⼚放⼊三级缓存，表示 A 开始实例化了，虽然我这个对象还不完整，但是先曝光出来让大家知道
 
-![1](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-1a8bdc29-ff43-4ff4-9b61-3eedd9da59b3.png)
+![1](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-1a8bdc29-ff43-4ff4-9b61-3eedd9da59b3.png)
 
 2. A 注⼊属性时，发现依赖 B，此时 B 还没有被创建出来，所以去实例化 B
 
 3. 同样，B 注⼊属性时发现依赖 A，它就会从缓存里找 A 对象。依次从⼀级到三级缓存查询 A，从三级缓存通过对象⼯⼚拿到 A，发现 A 虽然不太完善，但是存在，把 A 放⼊⼆级缓存，同时删除三级缓存中的 A，此时，B 已经实例化并且初始化完成，把 B 放入⼀级缓存。
 
-![2](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-bf2507bf-96aa-4b88-a58b-7ec41d11bc70.png)
+![2](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-bf2507bf-96aa-4b88-a58b-7ec41d11bc70.png)
 
 4. 接着 A 继续属性赋值，顺利从⼀级缓存拿到实例化且初始化完成的 B 对象，A 对象创建也完成，删除⼆级缓存中的 A，同时把 A 放⼊⼀级缓存
 
 5. 最后，⼀级缓存中保存着实例化、初始化都完成的 A、B 对象
 
-![5](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-022f7cb9-2c83-4fe9-b252-b02bd0fb2435.png)
+![5](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-022f7cb9-2c83-4fe9-b252-b02bd0fb2435.png)
 
-所以，我们就知道为什么 Spring 能解决 setter 注入的循环依赖了，因为实例化和属性赋值是分开的，所以里面有操作的空间。如果都是构造器注入的化，那么都得在实例化这一步完成注入，所以自然是无法支持了。
+所以，我们就知道为什么 Spring 能解决 setter 注入的循环依赖了，因为**实例化和属性赋值**是分开的，所以里面有操作的空间。如果都是构造器注入的化，那么都得在实例化这一步完成注入，所以自然是无法支持了。
 
 ### 17.为什么要三级缓存？⼆级不⾏吗？
+
+#### （循环依赖AOP问题是spring最核心的问题）
 
 不行，主要是为了**⽣成代理对象**。如果是没有代理的情况下，使用二级缓存解决循环依赖也是 OK 的。但是如果存在代理，三级没有问题，二级就不行了。
 
@@ -881,7 +896,7 @@ A 实例的初始化过程：
 
 假设只有⼆级缓存的情况，往⼆级缓存中放的显示⼀个普通的 Bean 对象，Bean 初始化过程中，通过 BeanPostProcessor 去⽣成代理对象之后，覆盖掉⼆级缓存中的普通 Bean 对象，那么可能就导致取到的 Bean 对象不一致了。
 
-![二级缓存不行的原因](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-6ece8a46-25b1-459b-8cfa-19fc696dd7d6.png)
+![二级缓存不行的原因](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-6ece8a46-25b1-459b-8cfa-19fc696dd7d6.png)
 
 ### 18.@Autowired 的实现原理？
 
@@ -946,27 +961,25 @@ protected void populateBean(String beanName, RootBeanDefinition mbd, @Nullable B
   }
 ```
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-
 ## AOP
 
 ### 19.说说什么是 AOP？
 
 AOP：面向切面编程。简单说，就是把一些业务逻辑中的相同的代码抽取到一个独立的模块中，让业务逻辑更加清爽。
 
-![横向抽取](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-09dbcda4-7c1b-42d6-8520-1a5fc84abbde.png)
+![横向抽取](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-09dbcda4-7c1b-42d6-8520-1a5fc84abbde.png)
 
 具体来说，假如我现在要 crud 写一堆业务，可是如何业务代码前后前后进行打印日志和参数的校验呢？
 
 我们可以把`日志记录`和`数据校验`可重用的功能模块分离出来，然后在程序的执行的合适的地方动态地植入这些代码并执行。这样就简化了代码的书写。
 
-![AOP应用示例](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-4754b4c0-0356-4077-a2f9-55e246cf8ba0.png)
+![AOP应用示例](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-4754b4c0-0356-4077-a2f9-55e246cf8ba0.png)
 
 业务逻辑代码中没有参和通用逻辑的代码，业务模块更简洁，只包含核心业务代码。实现了业务逻辑和通用逻辑的代码分离，便于维护和升级，降低了业务逻辑和通用逻辑的耦合性。
 
 AOP 可以将遍布应用各处的功能分离出来形成可重用的组件。在编译期间、装载期间或运行期间实现在不修改源代码的情况下给程序动态添加功能。从而实现对业务逻辑的隔离，提高代码的模块化能力。
 
-![Java语言执行过程](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-2b9859e5-019c-4e87-a449-990d3deae135.png)
+![Java语言执行过程](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-2b9859e5-019c-4e87-a449-990d3deae135.png)
 
 AOP 的核心其实就是**动态代理**，如果是实现了接口的话就会使用 JDK 动态代理，否则使用 CGLIB 代理，主要应用于处理一些具有横切性质的系统级服务，如日志收集、事务管理、安全检查、缓存、对象池管理等。
 
@@ -993,15 +1006,28 @@ AOP 的核心其实就是**动态代理**，如果是实现了接口的话就会
 
 AOP 一般有 **5 种**环绕方式：
 
-- 前置通知 (@Before)
-- 返回通知 (@AfterReturning)
-- 异常通知 (@AfterThrowing)
-- 后置通知 (@After)
-- 环绕通知 (@Around)
+- 前置通知 (@Before)：目标方法之前执行
+- 返回通知 (@AfterReturning)： 返回后通知: 执行方法结束前执行(异常不执行)
+- 异常通知 (@AfterThrowing)：异常通知: 出现异常时候执行
+- 后置通知 (@After)：目标方法之后执行（始终执行，异常也执行）
+- 环绕通知 (@Around)：环绕目标方法执行
 
-![环绕方式](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-320fa34f-6620-419c-b17a-4f516a83caeb.png)
+![环绕方式](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-320fa34f-6620-419c-b17a-4f516a83caeb.png)
 
 多个切面的情况下，可以通过 @Order 指定先后顺序，数字越小，优先级越高。
+
+**spring4（SpringBoot1.X）和spring5（SpringBoot2.X） 执行顺序不一样，现在一般用的是spring5**
+
+![](../../../../toBeBetterJavaer/images/sidebar/sanfene/spring-20210113141839619.png)
+
+1. 第一步 @Around 环绕前执行
+2. 第二步 @Before 目标方法之前执行
+3. 第三步 执行目标方法
+4. 第四步：出现异常 执行@AfterThrowing, 目标正常，而且有返回值 执行@AfterReturning
+5. 第五步 @After 目标方法之后执行（始终执行）
+6. 第六步 @Around 环绕后执行
+
+
 
 ### 20.说说你平时有用到 AOP 吗？
 
@@ -1033,22 +1059,40 @@ PS：这道题老三的同事面试候选人的时候问到了，候选人说了
   - @Aspect：标识切面
 
   - @Pointcut：设置切点，这里以自定义注解为切点，定义切点有很多其它种方式，自定义注解是比较常用的一种。
+
+    ```
+        //拦截注解
+        @Pointcut("@annotation(cn.fighter3.spring.aop_demo.WebLog)")
+        public void pointcut() {}
+        
+        //拦截方法
+        @Pointcut("execution(public * com.log.aop.controller.*Controller.*(..))")
+        public void pointcut() {}
+        
+        //拦截类上的注解
+        @Pointcut("@within(cn.fighter3.spring.aop_demo.WebLog)")
+        public void pointcut(){}
+    ```
+
+    
+
   - @Before：在切点之前织入，打印了一些入参信息
+
   - @Around：环绕切点，打印返回参数和接口执行时间
 
   ```java
   @Aspect
   @Component
   public class WebLogAspect {
-
+  
       private final static Logger logger         = LoggerFactory.getLogger(WebLogAspect.class);
-
+  
       /**
        * 以自定义 @WebLog 注解为切点
        **/
       @Pointcut("@annotation(cn.fighter3.spring.aop_demo.WebLog)")
       public void webLog() {}
-
+  
       /**
        * 在切点之前织入
        */
@@ -1070,7 +1114,7 @@ PS：这道题老三的同事面试候选人的时候问到了，候选人说了
           // 打印请求入参
           logger.info("Request Args   : {}",new ObjectMapper().writeValueAsString(joinPoint.getArgs()));
       }
-
+  
       /**
        * 在切点之后织入
        * @throws Throwable
@@ -1080,7 +1124,7 @@ PS：这道题老三的同事面试候选人的时候问到了，候选人说了
           // 结束后打个分隔线，方便查看
           logger.info("=========================================== End ===========================================");
       }
-
+  
       /**
        * 环绕
        */
@@ -1095,7 +1139,7 @@ PS：这道题老三的同事面试候选人的时候问到了，候选人说了
           logger.info("Time-Consuming : {} ms", System.currentTimeMillis() - startTime);
           return result;
       }
-
+  
   }
   ```
 
@@ -1110,7 +1154,7 @@ PS：这道题老三的同事面试候选人的时候问到了，候选人说了
   ```
 
 * 执行结果：可以看到日志打印了入参、出参和执行时间
-![执行结果](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-9c14f774-44b9-41b3-a8c0-f2a54385f6ff.png)
+![执行结果](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-9c14f774-44b9-41b3-a8c0-f2a54385f6ff.png)
 
 ### 21.说说 JDK 动态代理和 CGLIB 代理 ？
 
@@ -1120,21 +1164,30 @@ Spring 的 AOP 是通过[动态代理](https://mp.weixin.qq.com/s/aZtfwik0weJN5J
 
 1.  **Interface**：对于 JDK 动态代理，目标类需要实现一个 Interface。
 2.  **InvocationHandler**：InvocationHandler 是一个接口，可以通过实现这个接口，定义横切逻辑，再通过反射机制（invoke）调用目标类的代码，在次过程，可能包装逻辑，对目标方法进行前置后置处理。
-3.  **Proxy**：Proxy 利用 InvocationHandler 动态创建一个符合目标类实现的接口的实例，生成目标类的代理对象。
+3.  **Proxy**：Proxy 利用 InvocationHandler 动态创建一个符合目标类实现的接口的实例，生成目标类的代理对象（接口的代理对象）。
 
 **CgLib 动态代理**
 
-1.  使用 JDK 创建代理有一大限制，它只能为接口创建代理实例，而 CgLib 动态代理就没有这个限制。
-2.  CgLib 动态代理是使用字节码处理框架 **ASM**，其原理是通过字节码技术为一个类创建子类，并在子类中采用方法拦截的技术拦截所有父类方法的调用，顺势织入横切逻辑。
-3.  **CgLib** 创建的动态代理对象性能比 JDK 创建的动态代理对象的性能高不少，但是 CGLib 在创建代理对象时所花费的时间却比 JDK 多得多，所以对于单例的对象，因为无需频繁创建对象，用 CGLib 合适，反之，使用 JDK 方式要更为合适一些。同时，由于 CGLib 由于是采用动态创建子类的方法，对于 final 方法，无法进行代理。
+1. 使用 JDK 创建代理有一大限制，它只能为接口创建代理实例，而 CgLib 动态代理就没有这个限制。
+
+2. CgLib 动态代理是使用字节码处理框架 **ASM**，其原理是通过字节码技术为一个类创建子类，并在子类中采用方法拦截的技术拦截所有父类方法的调用，顺势织入横切逻辑。
+
+3. **CgLib** 创建的动态代理对象性能比 JDK 创建的动态代理对象的性能高不少，但是 CGLib 在创建代理对象时所花费的时间却比 JDK 多得多，所以对于单例的对象，因为无需频繁创建对象，用 CGLib 合适，反之，使用 JDK 方式要更为合适一些。同时，由于 CGLib 由于是采用动态创建子类的方法，对于 final 方法，无法进行代理。
+
+   ```
+   1、spring aop 默认优先使用JDK动态代理，其次才会使用cglib。
+   2、cglib作用是为没有实现接口的类提供代理的实现。
+   ```
+
+   ![spring-622c6c8d85ef4d208365bd30f34cb902](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-622c6c8d85ef4d208365bd30f34cb902.png)
 
 我们来看一个常见的小场景，客服中转，解决用户问题：
 
-![用户向客服提问题](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-c5c4b247-62dd-43a2-a043-da51c58f77c8.png)
+![用户向客服提问题](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-c5c4b247-62dd-43a2-a043-da51c58f77c8.png)
 
 **JDK 动态代理实现：**
 
-![JDK动态代理类图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-65b14a3f-2653-463e-af77-a8875d3d635c.png)
+![JDK动态代理类图](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-65b14a3f-2653-463e-af77-a8875d3d635c.png)
 
 - 接口
 
@@ -1155,7 +1208,7 @@ Spring 的 AOP 是通过[动态代理](https://mp.weixin.qq.com/s/aZtfwik0weJN5J
   }
   ```
 
-- 态代理工厂:ProxyFactory，直接用反射方式生成一个目标对象的代理对象，这里用了一个匿名内部类方式重写 InvocationHandler 方法，实现接口重写也差不多
+- 动态代理工厂:ProxyFactory，直接用反射方式生成一个目标对象的代理对象，这里用了一个匿名内部类方式重写 InvocationHandler 方法，实现接口重写也差不多
 
   ```java
   public class ProxyFactory {
@@ -1203,7 +1256,7 @@ Spring 的 AOP 是通过[动态代理](https://mp.weixin.qq.com/s/aZtfwik0weJN5J
 
 **Cglib 动态代理实现：**
 
-![Cglib动态代理类图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-74da87af-20d1-4a5b-a212-3837a15f0bab.png)
+![Cglib动态代理类图](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-74da87af-20d1-4a5b-a212-3837a15f0bab.png)
 
 - 目标类：Solver，这里目标类不用再实现接口。
 
@@ -1271,7 +1324,7 @@ Spring 的 AOP 是通过[动态代理](https://mp.weixin.qq.com/s/aZtfwik0weJN5J
 
 **Spring AOP**
 
-Spring AOP 属于`运行时增强`，主要具有如下特点：
+Spring AOP 属于**运行时增强**，主要具有如下特点：
 
 1.  基于动态代理来实现，默认如果使用接口的，用 JDK 提供的动态代理实现，如果是方法则使用 CGLIB 实现
 
@@ -1283,22 +1336,29 @@ Spring AOP 属于`运行时增强`，主要具有如下特点：
 
 **AspectJ**
 
-AspectJ 是一个易用的功能强大的 AOP 框架，属于`编译时增强`， 可以单独使用，也可以整合到其它框架中，是 AOP 编程的完全解决方案。AspectJ 需要用到单独的编译器 ajc。
+AspectJ 是一个易用的功能强大的 AOP 框架，属于**编译时增强**， 可以单独使用，也可以整合到其它框架中，是 AOP 编程的完全解决方案。AspectJ 需要用到单独的编译器 ajc。
 
 AspectJ 属于**静态织入**，通过修改代码来实现，在实际运行之前就完成了织入，所以说它生成的类是没有额外运行时开销的，一般有如下几个织入的时机：
 
-1.  编译期织入（Compile-time weaving）：如类 A 使用 AspectJ 添加了一个属性，类 B 引用了它，这个场景就需要编译期的时候就进行织入，否则没法编译类 B。
+1. 编译期织入（Compile-time weaving）：如类 A 使用 AspectJ 添加了一个属性，类 B 引用了它，这个场景就需要编译期的时候就进行织入，否则没法编译类 B。
 
-2.  编译后织入（Post-compile weaving）：也就是已经生成了 .class 文件，或已经打成 jar 包了，这种情况我们需要增强处理的话，就要用到编译后织入。
+2. 编译后织入（Post-compile weaving）：也就是已经生成了 .class 文件，或已经打成 jar 包了，这种情况我们需要增强处理的话，就要用到编译后织入。
 
-3.  类加载后织入（Load-time weaving）：指的是在加载类的时候进行织入，要实现这个时期的织入，有几种常见的方法
+3. 类加载后织入（Load-time weaving）：指的是在加载类的时候进行织入，要实现这个时期的织入，有几种常见的方法
+
+   ```
+   1、自定义类加载器来干这个，这个应该是最容易想到的办法，在被织入类加载到 JVM 前去对它进行加载，这样就可以在加载的时候定义行为了。
+   2、在 JVM 启动的时候指定 AspectJ 提供的 agent：-javaagent:xxx/xxx/aspectjweaver.jar
+   ```
+
+   
 
 整体对比如下：
 
-![Spring AOP和AspectJ对比](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-d1dbe9d9-c55f-4293-8622-d9759064d613.png)
+![Spring AOP和AspectJ对比](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-d1dbe9d9-c55f-4293-8622-d9759064d613.png)
 
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
 
 ## 事务
 
@@ -1308,7 +1368,7 @@ Spring 事务的本质其实就是数据库对事务的支持，没有数据库�
 
 Spring 支持`编程式事务`管理和`声明式`事务管理两种方式：
 
-![Spring事务分类](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-d3ee77fa-926d-4c39-91f8-a8b1544a9134.png)
+![Spring事务分类](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-d3ee77fa-926d-4c39-91f8-a8b1544a9134.png)
 
 1.  编程式事务
 
@@ -1317,17 +1377,41 @@ Spring 支持`编程式事务`管理和`声明式`事务管理两种方式：
 2.  声明式事务
 
 1.  声明式事务管理建立在 AOP 之上的。其本质是通过 AOP 功能，对方法前后进行拦截，将事务处理的功能编织到拦截的方法中，也就是在目标方法开始之前启动一个事务，在执行完目标方法之后根据执行情况提交或者回滚事务
-1.  优点是不需要在业务逻辑代码中掺杂事务管理的代码，只需在配置文件中做相关的事务规则声明或通过 @Transactional 注解的方式，便可以将事务规则应用到业务逻辑中，减少业务代码的污染。唯一不足地方是，最细粒度只能作用到方法级别，无法做到像编程式事务那样可以作用到代码块级别。
+1.  优点是不需要在业务逻辑代码中掺杂事务管理的代码，只需在配置文件中做相关的事务规则声明或通过 @Transactional 注解的方式，便可以将事务规则应用到业务逻辑中，减少业务代码的污染。唯一不足地方是，**最细粒度只能作用到方法级别，无法做到像编程式事务那样可以作用到代码块级别。**
 
 ### 24.Spring 的事务隔离级别？
 
 Spring 的接口 TransactionDefinition 中定义了表示隔离级别的常量，当然其实主要还是对应数据库的事务隔离级别：
 
 1. ISOLATION_DEFAULT：使用后端数据库默认的隔离界别，MySQL 默认可重复读，Oracle 默认读已提交。
-2. ISOLATION_READ_UNCOMMITTED：读未提交
-3. ISOLATION_READ_COMMITTED：读已提交
-4. ISOLATION_REPEATABLE_READ：可重复读
+2. ISOLATION_READ_UNCOMMITTED：读未提交 （**脏读**）
+3. ISOLATION_READ_COMMITTED：读已提交 （**不可重复读**）
+4. ISOLATION_REPEATABLE_READ：可重复读（**幻读**）
 5. ISOLATION_SERIALIZABLE：串行化
+
+```
+引发读的安全问题 
+脏读：一个事务读取到了另一个事务为提交的内容，例如隔离级别为未提交读
+
+不可重复读：一个事务读取到了另一个事务提交的数据，导致前后两次查询结果不一致，例如隔离级别为提交读
+
+幻读：一个事务读取到另一个事务插入的数据，导致多次查询的结果不一致。也就是说第一次查询有n条记录，第二次查询有n+1条数据，看起来就像产生幻觉
+
+mysql下，幻读出现的场景：
+1、如果事务中都是用快照读，那么不会产生幻读的问题（select * from ....where ...）
+2、快照读和当前读一起使用的时候就会产生幻读（or update,lock in share mode,update,delete）
+
+举例：
+	1.事务1：查询user表年龄为20的记录有2条记录
+	2.事务2：网user表插入一条年龄20的记录并提交
+	3.事务1：查询user表年龄为20的记录还是只2条记录
+	4.事务1：更新年龄为20的记录（显示更新了3条记录）
+	
+	明明步骤3查询的是2条记录，步骤4更新时却是3条记录，因为步骤3是快照读（MVCC），步骤4是当前读。
+	
+```
+
+
 
 ### 25.Spring 的事务传播机制？
 
@@ -1335,9 +1419,42 @@ Spring 事务的传播机制说的是，当多个事务同时存在的时候—�
 
 事务传播机制是使用简单的 ThreadLocal 实现的，所以，如果调用的方法是在新线程调用的，事务传播实际上是会失效的。
 
-![7种事务传播机制](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-a6e2a8dc-9771-4d8b-9d91-76ddee98af1a.png)
+![7种事务传播机制](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-a6e2a8dc-9771-4d8b-9d91-76ddee98af1a.png)
 
-Spring 默认的事务传播行为是 PROPAFATION_REQUIRED，它适合绝大多数情况，如果多个 ServiceX#methodX()都工作在事务环境下（均被 Spring 事务增强），且程序中存在调用链 `Service1#method1()->Service2#method2()->Service3#method3()`，那么这 3 个服务类的三个方法通过 Spring 的事务传播机制都工作在同一个事务中。
+Spring 默认的事务传播行为是 PROPAFATION_REQUIRED，它适合绝大多数情况，如果多个 ServiceX#methodX()都工作在事务环境下（均被 Spring 事务增强），且程序中存在调用链 `Service1#method1()->Service2#method2()->Service3#method3()`，那么这 3 个服务类的**三个方法通过 Spring 的事务传播机制都工作在同一个事务中。**
+
+
+
+```
+1、REQUIRED(Spring默认的事务传播类型 required：需要、依赖、依靠)：如果当前没有事务，则自己新建一个事务，如果当前存在事务则加入这个事务
+当A调用B的时候：如果A中没有事务，B中有事务，那么B会新建一个事务；如果A中也有事务、B中也有事务，那么B会加入到A中去，变成一个事务，这时，要么都成功，要么都失败。（假如A中有2个SQL，B中有两个SQL，那么这四个SQL会变成一个SQL，要么都成功，要么都失败）
+
+2、SUPPORTS（supports：支持;拥护）:当前存在事务，则加入当前事务，如果当前没有事务，就以非事务方法执行
+如果A中有事务，则B方法的事务加入A事务中，成为一个事务（一起成功，一起失败），如果A中没有事务，那么B就以非事务方式运行（执行完直接提交）；
+
+3、MANDATORY（mandatory：强制性的）:当前存在事务，则加入当前事务，如果当前事务不存在，则抛出异常。
+如果A中有事务，则B方法的事务加入A事务中，成为一个事务（一起成功，一起失败）；如果A中没有事务，B中有事务，那么B就直接抛异常了，意思是B必须要支持回滚的事务中运行
+
+4、REQUIRES_NEW（requires_new：需要新建）:创建一个新事务，如果存在当前事务，则挂起该事务。
+B会新建一个事务，A和B事务互不干扰，他们出现问题回滚的时候，也都只回滚自己的事务；
+
+5、NOT_SUPPORTED（not supported：不支持）:以非事务方式执行,如果当前存在事务，则挂起当前事务
+被调用者B会以非事务方式运行（直接提交），如果当前有事务，也就是A中有事务，A会被挂起（不执行，等待B执行完，返回）；A和B出现异常需要回滚，互不影响
+
+6、NEVER（never：从不）: 如果当前没有事务存在，就以非事务方式执行；如果有，就抛出异常。就是B从不以事务方式运行
+A中不能有事务，如果没有，B就以非事务方式执行，如果A存在事务，那么直接抛异常
+
+7、NESTED（nested：嵌套的）嵌套事务:如果当前事务存在，则在嵌套事务中执行，否则REQUIRED的操作一样(开启一个事务)
+如果A中没有事务，那么B创建一个事务执行，如果A中也有事务，那么B会会把事务嵌套在里面。
+
+注意：
+REQUIRES_NEW: 父事务异常，子事务不会回滚
+NESTED：父事务异常，子事务会回滚。
+子事务异常，如果不捕获，两种类型父子事务都会回滚，这和REQUIRES_NEW理论上不一样，是因为aop实现导致的
+
+```
+
+
 
 ### 26.声明式事务实现原理了解吗？
 
@@ -1347,13 +1464,13 @@ Spring 默认的事务传播行为是 PROPAFATION_REQUIRED，它适合绝大多�
 
 - **在执行目标方法时进行事务增强操作**：当通过代理对象调用 Bean 方法的时候，会触发对应的 AOP 增强拦截器，声明式事务是一种环绕增强，对应接口为`MethodInterceptor`，事务增强对该接口的实现为`TransactionInterceptor`，类图如下：
 
-![图片来源网易技术专栏](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-97493c7f-c596-4e98-a6a8-dab254d6d1ab.png)
+![图片来源网易技术专栏](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-97493c7f-c596-4e98-a6a8-dab254d6d1ab.png)
 
   事务拦截器`TransactionInterceptor`在`invoke`方法中，通过调用父类`TransactionAspectSupport`的`invokeWithinTransaction`方法进行事务处理，包括开启事务、事务提交、异常回滚。
 
 ### 27.声明式事务在哪些情况下会失效？
 
-![声明式事务的几种失效的情况](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-381e4ec9-a235-4cfa-9b4d-518095a7502a.png)
+![声明式事务的几种失效的情况](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-381e4ec9-a235-4cfa-9b4d-518095a7502a.png)
 
 **1、@Transactional 应用在非 public 修饰的方法上**
 
@@ -1382,7 +1499,7 @@ protected TransactionAttribute computeTransactionAttribute(Method method,
 
 rollbackFor 可以指定能够触发事务回滚的异常类型。Spring 默认抛出了未检查 unchecked 异常（继承自 RuntimeException 的异常）或者 Error 才回滚事务，其他异常不会触发回滚事务。
 
-![Spring默认支持的异常回滚](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-04053b02-3264-4d7f-b868-560a0333f08d.png)
+![Spring默认支持的异常回滚](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-04053b02-3264-4d7f-b868-560a0333f08d.png)
 
 ```java
 // 希望自定义的异常可以进行回滚
@@ -1456,7 +1573,7 @@ private Integer A() throws Exception {
 org.springframework.transaction.UnexpectedRollbackException: Transaction rolled back because it has been marked as rollback-only
 ```
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
 
 ## MVC
 
@@ -1473,7 +1590,7 @@ org.springframework.transaction.UnexpectedRollbackException: Transaction rolled 
 
 ### 29.Spring MVC 的工作流程？
 
-![Spring MVC的工作流程](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-e29a122b-db07-48b8-8289-7251032e87a1.png)
+![Spring MVC的工作流程](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-e29a122b-db07-48b8-8289-7251032e87a1.png)
 
 1. 客户端向服务端发送一次请求，这个请求会先到前端控制器 DispatcherServlet(也叫中央控制器)。
 2. DispatcherServlet 接收到请求后会调用 HandlerMapping 处理器映射器。由此得知，该请求该由哪个 Controller 来处理（并未调用 Controller，只是得知）
@@ -1503,7 +1620,7 @@ PS:这是一道全新的八股，毕竟 ModelAndView 这种方式应该没人用
 
 加入了这个注解后，整体的流程上和使用 ModelAndView 大体上相同，但是细节上有一些不同：
 
-![Spring MVC Restful请求响应示意图](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-2da963a0-5da9-4b3a-aafd-fd8dbc7e1807.png)
+![Spring MVC Restful请求响应示意图](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-2da963a0-5da9-4b3a-aafd-fd8dbc7e1807.png)
 
 1. 客户端向服务端发送一次请求，这个请求会先到前端控制器 DispatcherServlet
 
@@ -1523,7 +1640,7 @@ PS:这是一道全新的八股，毕竟 ModelAndView 这种方式应该没人用
 
 6. 执行完请求后，返回的 ModealAndView 为 null，ServletServerHttpResponse 里也已经写入了响应，所以不用关心 View 的处理
 
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
+
 
 ## Spring Boot
 
@@ -1531,7 +1648,7 @@ PS:这是一道全新的八股，毕竟 ModelAndView 这种方式应该没人用
 
 Spring Boot 基于 Spring 开发，Spirng Boot 本身并不提供 Spring 框架的核心特性以及扩展功能，只是用于快速、敏捷地开发新一代基于 Spring 框架的应用程序。它并不是用来替代 Spring 的解决方案，而是和 Spring 框架紧密结合用于提升 Spring 开发者体验的工具。
 
-![SpringBoot图标](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-d9164ee6-5c86-4313-8fd9-efb9acfa5f0b.png)
+![SpringBoot图标](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-d9164ee6-5c86-4313-8fd9-efb9acfa5f0b.png)
 
 Spring Boot 以`约定大于配置`核心思想开展工作，相比 Spring 具有如下优势：
 
@@ -1546,7 +1663,7 @@ Spring Boot 以`约定大于配置`核心思想开展工作，相比 Spring 具�
 
 SpringBoot 开启自动配置的注解是`@EnableAutoConfiguration` ，启动类上的注解`@SpringBootApplication`是一个复合注解，包含了@EnableAutoConfiguration：
 
-![SpringBoot自动配置原理](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-df77ee15-2ff0-4ec7-8e65-e4ebb8ba88f1.png)
+![SpringBoot自动配置原理](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-df77ee15-2ff0-4ec7-8e65-e4ebb8ba88f1.png)
 
 - `EnableAutoConfiguration` 只是一个简单的注解，自动装配核心功能的实现实际是通过 `AutoConfigurationImportSelector`类
 
@@ -1670,7 +1787,7 @@ SpringBoot 开启自动配置的注解是`@EnableAutoConfiguration` ，启动类
      public class HelloTest {
          @Autowired
          HelloProperties helloProperties;
-
+     
          @Test
          public void hello(){
              System.out.println("你好，"+helloProperties.getName());
@@ -1680,7 +1797,7 @@ SpringBoot 开启自动配置的注解是`@EnableAutoConfiguration` ，启动类
 
 - 运行结果
 
-![运行结果](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-3ff3cc21-6a56-434b-a89e-d2b55d558bd6.png)
+![运行结果](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-3ff3cc21-6a56-434b-a89e-d2b55d558bd6.png)
 
 至此，随手写的一个自定义 SpringBoot-Starter 就完成了，虽然比较简单，但是完成了主要的自动装配的能力。
 
@@ -1695,7 +1812,7 @@ SpringApplication 这个类主要做了以下四件事情：
 
 SpringBoot 启动大致流程如下 ：
 
-![SpringBoot 启动大致流程-图片来源网络](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-68744556-a1ba-4e1f-a092-1582875f0da6.png)
+![SpringBoot 启动大致流程-图片来源网络](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-68744556-a1ba-4e1f-a092-1582875f0da6.png)
 
 ## Spring Cloud
 
@@ -1703,7 +1820,7 @@ SpringBoot 启动大致流程如下 ：
 
 SpringCloud 是 Spring 官方推出的微服务治理框架。
 
-![Spring Cloud Netfilx核心组件-来源参考[2]](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-92ab53d5-f303-4fc5-bd26-e62cefe374b3.png)
+![Spring Cloud Netfilx核心组件-来源参考[2]](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-92ab53d5-f303-4fc5-bd26-e62cefe374b3.png)
 
 > **什么是微服务？**
 
@@ -1725,31 +1842,23 @@ SpringCloud 是 Spring 官方推出的微服务治理框架。
 
 > **SpringCloud 有哪些核心组件？**
 
-![SpringCloud](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/sidebar/sanfene/spring-2b988a72-0739-4fed-b271-eaf12589444f.png)
+![SpringCloud](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-2b988a72-0739-4fed-b271-eaf12589444f.png)
 
 PS:微服务后面有机会再扩展，其实面试一般都是结合项目去问。
 
----
+## 个人
 
-*没有什么使我停留——除了目的，纵然岸旁有玫瑰、有绿荫、有宁静的港湾，我是不系之舟*。
+### 36 cglib为什么不能代理private方法
 
+因为cglib动态代理本质是通过继承目标类，重写目标类方法来生成代理类实现的。所以final类和final方法无法被代理，private方法是无法被子类访问的，**即使子类实现一个和父类一模一样的方法，实际上只是属于子类的新方法，并不会覆盖父类对应的方法。**
 
-**系列内容**：
+## 37 讲清楚代理
 
-- [面渣逆袭 Java SE 篇👍](https://tobebetterjavaer.com/sidebar/sanfene/javase.html)
-- [面渣逆袭 Java 集合框架篇👍](https://tobebetterjavaer.com/sidebar/sanfene/javathread.html)
-- [面渣逆袭 Java 并发编程篇👍](https://tobebetterjavaer.com/sidebar/sanfene/collection.html)
-- [面渣逆袭 JVM 篇👍](https://tobebetterjavaer.com/sidebar/sanfene/jvm.html)
-- [面渣逆袭 Spring 篇👍](https://tobebetterjavaer.com/sidebar/sanfene/spring.html)
-- [面渣逆袭 Redis 篇👍](https://tobebetterjavaer.com/sidebar/sanfene/redis.html)
-- [面渣逆袭 MyBatis 篇👍](https://tobebetterjavaer.com/sidebar/sanfene/mybatis.html)
-- [面渣逆袭 MySQL 篇👍](https://tobebetterjavaer.com/sidebar/sanfene/mysql.html)
-- [面渣逆袭操作系统篇👍](https://tobebetterjavaer.com/sidebar/sanfene/os.html)
-- [面渣逆袭计算机网络篇👍](https://tobebetterjavaer.com/sidebar/sanfene/network.html)
-- [面渣逆袭RocketMQ篇👍](https://tobebetterjavaer.com/sidebar/sanfene/rocketmq.html)
+```
+1、代理有静态代理和动态代理，动态代理又细分成java自带的jdk代理的和cglib。
+2、静态代理：采用的是23中设计模式中的代理模式，代理类和目标类实现同一接口，目标类注入到代理类中，代理中的接口方法对目标方法实现增强。
+3、JDK代理：是对接口进行代理增强，目标类必须实现接口，InvocationHandler利用反射，对接口进行增强，生成接口的实现代理类。运用了动态生成字节码技术。
+4、cglib: 可以直接代理类，目标类不需要实现接口。运用了动态生成字节码技术。不能对final类进行继承。
+```
 
-----
-
-![](http://cdn.tobebetterjavaer.com/tobebetterjavaer/images/xingbiaogongzhonghao.png)
-
->  图文详解 35 道Spring面试高频题，这次吊打面试官，我觉得稳了（手动 dog）。整理：沉默王二，戳[转载链接](https://mp.weixin.qq.com/s/EQge6DmgIqYITM3mAxkatg)，作者：三分恶，戳[原文链接](https://mp.weixin.qq.com/s/Y17S85ntHm_MLTZMJdtjQQ)。
+![image-20221108204409922](../../../../tobebetterjavaer/images/sidebar/sanfene/spring-20221108204409922.png)
